@@ -27,13 +27,14 @@ else
 fi
 
 # add ssh folder to skel directory
+# using command test -d 
 if [ -d "$SSH_SKEL" ];
 then
     echo $SSH_SKEL already exists
 else
     sudo mkdir -p $SSH_SKEL
     sudo touch $SSH_SKEL/$AUTH
-    sudo bash -c "cat $AUTH >> SSH_SKEL/authorized_keys"
+    sudo bash -c "cat $AUTH >> $SSH_SKEL/authorized_keys"
 fi
 
 # create each user on the server
